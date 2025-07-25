@@ -1,0 +1,11 @@
+[Unit]
+Description=Minecraft Web Server
+After=network.target
+[Service]
+Type=simple
+WorkingDirectory=/home/william/mcweb/mcweb
+ExecStart=/usr/bin/node /home/william/mcweb/mcweb/server.js
+Restart=on-failure
+User=root
+[Install]
+WantedBy=multi-user.target
