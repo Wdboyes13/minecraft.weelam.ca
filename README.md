@@ -2,6 +2,7 @@
 
 ## Directory Structure
 - Server.js  -- This is the main server javascript file. Run by systemd
+- mcweb.service -- The systemd config file
 - serverstat.sh -- The file thats executed to get server status. Run by server.js
 - www/       -- Contains the actual HTML/CSS/JS for the website
 - www/index.html - Homepage
