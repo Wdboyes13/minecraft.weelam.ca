@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Minecraft Server</title>
+
+    <script type="importmap">
+        {
+        "imports": {
+            "@material/web/": "https://esm.run/@material/web/"
+        }
+        }
+    </script>
+    <script type="module" src="/styles.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,400,0,0" />
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+    <body>
+        <div class="center-container">
+            <h1 class="md-typescale-display-medium">THE Minecraft Server</h1>
+            <md-elevated-button type="button" href="rules/index.html">Rules</md-elevated-button>
+            <md-elevated-button type="button" href="info/index.html">Info</md-elevated-button>
+            <p id="stat" class="md-typescale-body-large">Status: </p>
+        </div>
+        <script>
+            const stat = document.getElementById('stat');
+            async function updStat(){
+                try {
+                    const res = await fetch('/api/status');
+                    const data = await res.json();
+                    document.getElementById('stat').textContent = 'Status:' + data.output;
+                } catch (err){
+                    document.getElementById('stat').textContent = 'Error fetching status';
+                    console.error('Fetch error:', err);
+                }
+            }
+            updStat();
+            setInterval(updstat, 60000);
+        </script>
+    </body>
+</html>
